@@ -1,8 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
-# from flask_cors import CORS
+from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 
@@ -23,7 +22,7 @@ def create_app(test_config=None):
 
     # # Enable Cross-Origin Resource Sharing (CORS) for
     # # handling requests from different origins
-    # CORS(app)
+    CORS(app)
 
     # Disable SQLAlchemy modification tracking to improve performance
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
