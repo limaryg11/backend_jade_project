@@ -14,7 +14,7 @@ def validate_model(cls, model_id):
         abort(make_response({"message": f"{cls.__name__} {model_id} invalid"}, 400))
 
     # this method queries database for instance of model class with given id
-    model = db.session.get(cls, model_id)
+    model = cls.query.get(model_id)
 
     if not model:
         # 404 = Not Found
