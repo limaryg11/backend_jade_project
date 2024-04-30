@@ -67,10 +67,10 @@ def student_data_from_csv(get_file):
 
 @pytest.fixture
 def two_saved_students(app, student_data_from_csv):
-    student_1  = student_data_from_csv[1]
+    student_1 = student_data_from_csv[1]
     student_1_from = Student.from_dict(student_1)
 
-    student_2  = student_data_from_csv[2]
+    student_2 = student_data_from_csv[2]
     student_2_from = Student.from_dict(student_2)
 
     db.session.add_all([student_1_from, student_2_from])

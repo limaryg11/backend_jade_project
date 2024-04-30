@@ -89,14 +89,18 @@ def test_student_from_dict_returns_student(student_data_from_csv):
 
     student = Student.from_dict(mock_data)
 
-    actual = {"name": student.name, "date_of_birth": student.dob, "email": student.email}
+    actual = {
+        "name": student.name,
+        "date_of_birth": student.dob,
+        "email": student.email,
+    }
 
     expected = {
         "name": mock_data["name"],
         "date_of_birth": Student.convert_date_string(mock_data["date_of_birth"]),
         "email": mock_data["email"],
     }
-    
+
     assert actual == expected
 
 

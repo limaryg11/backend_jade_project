@@ -19,7 +19,11 @@ class Student(db.Model):
 
     def to_dict(self):
 
-        dob_date = self.convert_date_string(self.dob) if isinstance(self.dob, str) else self.dob
+        dob_date = (
+            self.convert_date_string(self.dob)
+            if isinstance(self.dob, str)
+            else self.dob
+        )
 
         student_dict = {
             "id": self.student_id,
