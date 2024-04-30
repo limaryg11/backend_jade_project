@@ -8,6 +8,7 @@ class Student(db.Model):
     dob = db.Column(db.Date, nullable=False)
     email = db.Column(db.String, nullable=False)
 
+    @staticmethod
     def convert_date_string(date_string):
         try:
             # parse the date string and return a datetime object
@@ -17,11 +18,14 @@ class Student(db.Model):
             raise ValueError("Invalid date format. Please use MM/DD/YYYY.")
 
     def to_dict(self):
+
+        dob_date = self.convert_date_string(self.dob) if isinstance(self.dob, str) else self.dob
+
         student_dict = {
             "id": self.student_id,
             "name": self.name,
             # Convert date back to string
-            "date_of_birth": self.dob.strftime("%m/%d/%Y"),
+            "date_of_birth": dob_date.strftime("%m/%d/%Y"),
             "email": self.email,
         }
 
